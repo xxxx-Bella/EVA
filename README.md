@@ -5,8 +5,9 @@ This repo contains the Pytorch implementation of our paper:
 > Yuxin Hong, Xiao Zhang, Xin Zhang, Joey Tianyi Zhou.
 
 - **Accepted at ACMMM 2024 as Oral Presentation.**
-- [**Nominated for best paper awards**](https://2024.acmmm.org/best-paper).
+- [**Nominated for Best Paper Awards**](https://2024.acmmm.org/best-paper).
 
 ![pipeline](pipeline.png)
 
 
+**Coming Soon...**
