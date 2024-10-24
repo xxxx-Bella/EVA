@@ -39,21 +39,21 @@ Then move/copy them to `/.medmnist`.
 
 ## Getting Started
 
-### Train classifiers on the Entire Dataset
+### Train Classifiers on the Entire Dataset
 This step is **necessary** to collect training dynamics for future coreset selection.
 
     python train.py --dataset organsmnist --gpuid 0 --epochs 200 --lr 0.1 --network resnet18 --batch_size 256 --task_name all-data --base_dir ./data-model/organsmnist --download --as_rgb
     
 After completing this step, you will obtain a `.pickle` file under the path `./data-model/organsmnist/all-data`, which will be used for sample importance calculation.
 
-### Sample importance score calculation
+### Sample Importance Score Calculation
 We need to first calcualte the different importance scores for coreset selection.
 
     python generate_importance_score.py --dataset organsmnist --gpuid 0 --base_dir ./data-model/organsmnist --e_min 0 --e_max 10 --l_min 100 --l_max 110 --task_name all-data --as_rgb
 
 After the calculation, you will obtain a `.pickle` file storing sorted sample indexes and their respective importance scores.
 
-### Train classifiers on the Selected Coreset
+### Train Classifiers on the Selected Coreset
 Here we use 30% selection rate on OrganSMNIST as an example.
     
     python train.py --dataset organsmnist --gpuid 0 --epochs 200 --base_dir ./data-model/organsmnist/eva --coreset --coreset_mode coreset --data-score-path ./data-model/organsmnist/all-data/data-score-all-data-0-10-100-110.pickle --coreset_key eva --as_rgb --task_name eva-0-10-100-110-0.3  --coreset_ratio 0.3
