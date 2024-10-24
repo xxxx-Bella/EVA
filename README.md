@@ -20,8 +20,7 @@ We strongly recommend that you create your own virtual environment first to avoi
 ### Dataset
 
 We validate the effectiveness of EVA mainly on [MedMNIST](https://medmnist.com/). 
-
-Then install `medmnist` as a standard Python package from [PyPI](https://pypi.org/project/medmnist/):
+Install `medmnist` as a standard Python package from [PyPI](https://pypi.org/project/medmnist/):
 
     pip install medmnist
 
