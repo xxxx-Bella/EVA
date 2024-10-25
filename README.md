@@ -33,8 +33,7 @@ Check whether you have installed the latest code [version](medmnist/info.py#L1):
     >>> import medmnist
     >>> print(medmnist.__version__)
 
-Please download `.npz` files from [here](https://zenodo.org/records/10519652) to the `/data` directory. 
-Then move/copy them to `/.medmnist`.
+Please download `.npz` files from [here](https://zenodo.org/records/10519652) to `/.medmnist` directory.
 
 
 ## Getting Started
