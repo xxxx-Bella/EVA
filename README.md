@@ -28,7 +28,7 @@ Or install from source:
 
     pip install --upgrade git+https://github.com/MedMNIST/MedMNIST.git
 
-Check whether you have installed the latest code [version](medmnist/info.py#L1):
+Check whether you have installed the latest code [version](core/data/medmnist_info.py#L1):
 
     >>> import medmnist
     >>> print(medmnist.__version__)
