@@ -36,7 +36,7 @@ Check whether you have installed the latest code [version](core/data/medmnist_in
 Please download `.npz` files from [here](https://zenodo.org/records/10519652) to `/.medmnist` directory.
 
 
-## :running: Getting Started
+## 🏃‍♀️ Getting Started
 
 ### Train Classifiers on the Entire Dataset
 This step is **necessary** to collect training dynamics for future coreset selection.
