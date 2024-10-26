@@ -14,7 +14,6 @@ from core.training import Trainer, TrainingDynamicsLogger
 from core.data import IndexDataset, CIFARDataset, SVHNDataset, CINIC10Dataset
 from core.utils import print_training_info, StdRedirect
 
-# med
 from torchvision.models import resnet18, resnet50                   
 import medmnist
 from medmnist import INFO, Evaluator
@@ -25,9 +24,9 @@ parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
 ######################### Data Setting #########################
 parser.add_argument('--batch_size', type=int, default=256, metavar='N',
                     help='input batch size for training.')
-parser.add_argument('--dataset', type=str, default='cifar10', choices=['cifar10', 'cifar100', 'tiny', 'svhn', 'cinic10', 'organamnist', 'organsmnist', 'tissuemnist', 'dermamnist', 'pneumoniamnist', 'chestmnist', 'pathmnist'])
-parser.add_argument('--download', action="store_true")  # med
-parser.add_argument('--as_rgb', help='convert the grayscale image to RGB', action="store_true")  # med
+parser.add_argument('--dataset', type=str, default='cifar10', choices=['cifar10', 'cifar100', 'tiny', 'svhn', 'cinic10', 'organamnist', 'organsmnist', 'tissuemnist', 'dermamnist', 'pneumoniamnist', 'pathmnist'])
+parser.add_argument('--download', action="store_true")
+parser.add_argument('--as_rgb', help='convert the grayscale image to RGB', action="store_true")
 parser.add_argument('--e_min', type=int, help="early min epoch")
 parser.add_argument('--e_max', type=int, help="early max epoch")
 parser.add_argument('--l_min', type=int, help="later min epoch")
@@ -155,16 +154,18 @@ transform_identical = transforms.Compose([transforms.ToTensor(),])
 
 data_dir =  os.path.join(args.data_dir, dataset)
 print(f'dataset: {dataset}')
-if dataset == 'cifar10':
-    trainset = CIFARDataset.get_cifar10_train(data_dir, transform = transform_identical)
-elif dataset == 'cifar100':
-    trainset = CIFARDataset.get_cifar100_train(data_dir, transform = transform_identical)
-else:  # MedMNIST
+
+if 'mnist' in dataset:
     DataClass = getattr(medmnist, info['python_class'])
     data_transform = transforms.Compose(
         [transforms.ToTensor(),
         transforms.Normalize(mean=[.5], std=[.5])])
     trainset = DataClass(split='train', transform=data_transform, download=download, as_rgb=as_rgb)
+elif dataset == 'cifar10':
+    trainset = CIFARDataset.get_cifar10_train(data_dir, transform = transform_identical)
+elif dataset == 'cifar100':
+    trainset = CIFARDataset.get_cifar100_train(data_dir, transform = transform_identical)
+
 
 trainset = IndexDataset(trainset)
 print(len(trainset))
