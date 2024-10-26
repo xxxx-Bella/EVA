@@ -11,7 +11,7 @@ This repo contains the Pytorch implementation of our paper:
 
 
 
-## Installation and Requirements
+## :computer:Installation and Requirements
 
 We strongly recommend that you create your own virtual environment first to avoid conflicts. Then setup the required Python environments:
     
