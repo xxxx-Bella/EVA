@@ -11,7 +11,7 @@ import pickle
 
 from core.model_generator import wideresnet, preact_resnet, resnet
 from core.training import Trainer, TrainingDynamicsLogger
-from core.data import IndexDataset, CIFARDataset, SVHNDataset, CINIC10Dataset
+from core.data import IndexDataset, CIFARDataset
 from core.utils import print_training_info, StdRedirect
 
 from torchvision.models import resnet18, resnet50                   
@@ -24,7 +24,7 @@ parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
 ######################### Data Setting #########################
 parser.add_argument('--batch_size', type=int, default=256, metavar='N',
                     help='input batch size for training.')
-parser.add_argument('--dataset', type=str, default='cifar10', choices=['cifar10', 'cifar100', 'tiny', 'svhn', 'cinic10', 'organamnist', 'organsmnist', 'tissuemnist', 'dermamnist', 'pneumoniamnist', 'pathmnist'])
+parser.add_argument('--dataset', type=str, default='cifar10', choices=['cifar10', 'cifar100', 'organamnist', 'organsmnist', 'tissuemnist', 'dermamnist', 'pneumoniamnist', 'pathmnist'])
 parser.add_argument('--download', action="store_true")
 parser.add_argument('--as_rgb', help='convert the grayscale image to RGB', action="store_true")
 parser.add_argument('--e_min', type=int, help="early min epoch")
@@ -67,15 +67,15 @@ print_training_info(args, all=True)
 
 #########################
 dataset = args.dataset
-if dataset in ['cifar10', 'svhn', 'cinic10']:
-    num_classes=10
-elif dataset == 'cifar100':
-    num_classes=100
-else:
+if 'mnist' in dataset:
     info = INFO[args.dataset]
     download = args.download
     as_rgb = args.as_rgb
     num_classes = len(info['label'])
+elif dataset == 'cifar10':
+    num_classes=10
+elif dataset == 'cifar100':
+    num_classes=100
 
 
 
