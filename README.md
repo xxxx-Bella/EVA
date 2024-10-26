@@ -11,7 +11,7 @@ This repo contains the Pytorch implementation of our paper:
 
 
 
-## :computer:Installation and Requirements
+## :computer: Installation and Requirements
 
 We strongly recommend that you create your own virtual environment first to avoid conflicts. Then setup the required Python environments:
     
@@ -36,7 +36,7 @@ Check whether you have installed the latest code [version](medmnist/info.py#L1):
 Please download `.npz` files from [here](https://zenodo.org/records/10519652) to `/.medmnist` directory.
 
 
-## Getting Started
+## :running: Getting Started
 
 ### Train Classifiers on the Entire Dataset
 This step is **necessary** to collect training dynamics for future coreset selection.
@@ -60,5 +60,5 @@ Here we use 30% selection rate on OrganSMNIST as an example.
 * For an aggressive low selection rate, pls set a smaller batch size for better performance.
 
 
-## Citation
+## :thumbsup: Citation
 If you find our work useful for your research, please cite our paper. 
