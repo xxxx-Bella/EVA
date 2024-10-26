@@ -145,7 +145,6 @@ def EVA(td_log, dataset, data_importance, e_min=0, e_max=10, l_min=100, l_max=11
 
 
 
-
 GPUID = args.gpuid
 os.environ["CUDA_VISIBLE_DEVICES"] = str(GPUID)
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
