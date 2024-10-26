@@ -62,7 +62,7 @@ Here we use 30% selection rate on OrganSMNIST as an example.
 
 ## :thumbsup: Citation
 If you find our work useful for your research, please cite our paper:
-@inproceedings{Hong2024EVA,
+> @inproceedings{Hong2024EVA,
     author = {Hong, Yuxin and Zhang, Xiao and Zhang, Xin and Zhou, Joey Tianyi},
     title = {Evolution-aware VAriance (EVA) Coreset Selection for Medical Image Classification},
     year = {2024},
