@@ -59,6 +59,11 @@ Here we use 30% selection rate on OrganSMNIST as an example.
 
 * For an aggressive low selection rate, pls set a smaller batch size for better performance.
 
+We also provide a `class-balanced` option for coreset selection.
+When enabled, the selection process allocates samples proportionally across all classes based on the original dataset distribution, preventing over-representation of certain classes in the coreset.
+
+    python train.py --dataset organsmnist --gpuid 0 --base_dir ./data-model/organsmnist/eva --coreset --coreset_mode coreset --data-score-path ./data-model/organsmnist/all-data/data-score-all-data-0-10-100-110.pickle --coreset_key eva --as_rgb --task_name eva-0-10-100-110-0.3 --class-balanced 1 --coreset_ratio 0.3
+
 
 ## :thumbsup: Citation
 If you find our work useful for your research, please cite our paper:
