@@ -2,10 +2,11 @@ import torch
 
 class CoresetSelection(object):
     @staticmethod
-    def score_monotonic_selection(data_score, key, ratio, descending, class_balanced):
+    def score_monotonic_selection(data_score, key, ratio, descending):
         score = data_score[key]
         score_sorted_index = score.argsort(descending=descending)
         total_num = ratio * data_score['targets'].shape[0]
+
 
         print(f'High priority {key}: {score[score_sorted_index[:15]]}')
         print(f'Low priority {key}: {score[score_sorted_index[-15:]]}')
