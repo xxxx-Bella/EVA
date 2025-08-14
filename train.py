@@ -1,4 +1,3 @@
-Train.py
 from ast import arg
 import torch
 import torchvision
@@ -61,8 +60,6 @@ parser.add_argument('--data-score-path', type=str)
 parser.add_argument('--coreset_key', type=str)
 parser.add_argument('--data-score-descending', type=int, default=1,
                     help='Set 1 to use larger score data first.')
-parser.add_argument('--class-balanced', type=int, default=0,
-                    help='Set 1 to use the same class ratio as to the whole dataset.')
 parser.add_argument('--coreset_ratio', type=float)
 
 #### Double-end Pruning Setting ####
@@ -150,7 +147,7 @@ if args.coreset and coreset_ratio < 1.0:
         coreset_index = CoresetSelection.random_selection(total_num=len(trainset), num=args.coreset_ratio * len(trainset))
 
     if args.coreset_mode == 'coreset':
-        coreset_index = CoresetSelection.score_monotonic_selection(data_score=data_score, key=args.coreset_key, ratio=args.coreset_ratio, descending=(args.data_score_descending == 1), class_balanced=(args.class_balanced == 1))
+        coreset_index = CoresetSelection.score_monotonic_selection(data_score=data_score, key=args.coreset_key, ratio=args.coreset_ratio, descending=(args.data_score_descending == 1))
 
     if args.coreset_mode == 'stratified':
         mis_num = int(args.mis_ratio * total_num)
